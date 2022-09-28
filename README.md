@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+# 효율적인 프로젝트 시작을 위해 만든 template 폴더입니다.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
