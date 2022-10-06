@@ -44,3 +44,12 @@
 .container.twoLines {
   width: 50%;
 }
+
+@media screen and (max-width: 48rem) {
+  .video {
+    width: 100%;
+  }
+  .container.twoLines {
+    width: 100%;
+  }
+}
