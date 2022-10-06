@@ -18,6 +18,7 @@ const SearchBar = ({ onSearch }) => {
   const onKeyPress = (event) => {
     if (event.key === "Enter") handleSearch();
   };
+
   return (
     <header className="searchHeader">
       <div className="logo">

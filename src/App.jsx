@@ -4,6 +4,7 @@ import "./app.scss";
 import VideoList from "./components/videoList/VideoList";
 import SearchBar from "./components/searchBar/SearchBar";
 import VideoDetail from "./components/videoDetail/VideoDetail";
+import { useCallback } from "react";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
@@ -17,22 +18,25 @@ function App({ youtube }) {
     });
   };
 
-  const onSearch = (검색어) => {
-    youtube
-      .search(검색어)
-      .then((searchedData) => {
-        setVideos(searchedData);
-        setSelectedVideo(null);
-      })
-      .catch((error) => console.log("error", error));
-  };
+  const onSearch = useCallback(
+    (검색어) => {
+      youtube
+        .search(검색어)
+        .then((searchedData) => {
+          setVideos(searchedData);
+          setSelectedVideo(null);
+        })
+        .catch((error) => console.log("error", error));
+    },
+    [youtube]
+  );
 
   useEffect(() => {
     youtube
       .mostPopular() //
       .then((initialData) => setVideos(initialData))
       .catch((error) => console.log("error", error));
-  }, []);
+  }, [youtube]);
 
   return (
     <div className="app">
