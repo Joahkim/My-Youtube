@@ -1,12 +1,17 @@
 import React from "react";
 import "./videoItem.scss";
 
-const VideoItem = ({ video: { snippet } }) => {
+const VideoItem = ({ video, video: { snippet }, selectVideo, display }) => {
   const imageUrl = snippet.thumbnails.medium.url;
   const videoTitle = snippet.title;
   const videoChannel = snippet.channelTitle;
+
+  const displayType = display === "oneLine" ? "oneLine" : "twoLines";
   return (
-    <li className="container">
+    <li
+      className={`container ${displayType}`}
+      onClick={() => selectVideo(video)}
+    >
       <div className="video">
         <img className="thumbnail" src={imageUrl} alt="thumbnails of Videos" />
         <div className="metaInfo">

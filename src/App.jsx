@@ -3,14 +3,27 @@ import { useEffect } from "react";
 import "./app.scss";
 import VideoList from "./components/videoList/VideoList";
 import SearchBar from "./components/searchBar/SearchBar";
+import VideoDetail from "./components/videoDetail/VideoDetail";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const selectVideo = (video) => {
+    setSelectedVideo(video);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const onSearch = (검색어) => {
     youtube
       .search(검색어)
-      .then((searchedData) => setVideos(searchedData))
+      .then((searchedData) => {
+        setVideos(searchedData);
+        setSelectedVideo(null);
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -24,7 +37,20 @@ function App({ youtube }) {
   return (
     <div className="app">
       <SearchBar onSearch={onSearch} />
-      <VideoList videos={videos} />
+      <section className="content ">
+        {selectedVideo && (
+          <div className="detail ">
+            <VideoDetail selectedVideo={selectedVideo} />
+          </div>
+        )}
+        <div className="list">
+          <VideoList
+            videos={videos}
+            selectVideo={selectVideo}
+            display={selectedVideo ? "oneLine" : "twoLines"}
+          />
+        </div>
+      </section>
     </div>
   );
 }
