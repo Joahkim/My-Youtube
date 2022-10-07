@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
 import "./searchBar.scss";
 
 const SearchBar = ({ onSearch }) => {
@@ -26,8 +27,8 @@ const SearchBar = ({ onSearch }) => {
   return (
     <header className="searchHeader">
       <div className="logo" onClick={backHome}>
-        <img className="logoImage" src="/images/logo.png" alt="logo" />
-        <h1>Youtube</h1>
+        <IoLogoYoutube className="logoImage" />
+        <h1>Mytube</h1>
       </div>
       <input
         onKeyPress={onKeyPress}
