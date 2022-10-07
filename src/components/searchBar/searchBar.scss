@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     margin-right: 1em;
+    cursor: pointer;
 
     .logoImage {
       width: 50%;
@@ -25,5 +26,11 @@
 
   .searchBtn {
     background-color: darkgray;
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  .logoImage {
+    display: none;
   }
 }

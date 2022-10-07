@@ -8,7 +8,7 @@ class Youtube {
       params: {
         part: "snippet",
         chart: "mostPopular",
-        maxResults: 25,
+        maxResults: 50,
       },
     });
     return response.data.items;
@@ -18,7 +18,7 @@ class Youtube {
     const response = await this.youtubeBaseData.get("search", {
       params: {
         part: "snippet",
-        maxResults: 25,
+        maxResults: 50,
         type: "video",
         q: 검색어,
       },

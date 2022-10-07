@@ -19,9 +19,13 @@ const SearchBar = ({ onSearch }) => {
     if (event.key === "Enter") handleSearch();
   };
 
+  const backHome = () => {
+    window.location.href = "/";
+  };
+
   return (
     <header className="searchHeader">
-      <div className="logo">
+      <div className="logo" onClick={backHome}>
         <img className="logoImage" src="/images/logo.png" alt="logo" />
         <h1>Youtube</h1>
       </div>
